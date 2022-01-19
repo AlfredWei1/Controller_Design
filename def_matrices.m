@@ -1,0 +1,37 @@
+function [A000,A001,A010,A011,A100,A101,A110,A111] = def_matrices(parameters)
+m = (pi*parameters.rho*parameters.g*(parameters.r)^4)/(128*parameters.mu*parameters.d);
+T = parameters.T;
+k = m*T;
+A000 = [1 0 0 0;
+        0 1 0 0;
+        0 0 1 0;
+        0 0 0 1];
+A001 = [1 0 0 0;
+        0 1 0 0;
+        0 0 1-k k;
+        0 0 k 1-k];
+A010 = [1 0 0 0;
+        0 1-k k 0;
+        0 k 1-k 0;
+        0 0 0 1];
+A011 = [1 0 0 0;
+        0 1-k k 0;
+        0 k 1-2*k k;
+        0 0 k 1-k];
+A100 = [1-k k 0 0;
+        k 1-k 0 0;
+        0 0 1 0;
+        0 0 0 1];
+A101 = [1-k k 0 0;
+        k 1-k 0 0;
+        0 0 1-k k;
+        0 0 k 1-k];
+A110 = [1-k k 0 0;
+        k 1-2*k k 0;
+        0 k 1-k 0;
+        0 0 0 1];
+A111 = [1-k k 0 0;
+        k 1-2*k k 0;
+        0 k 1-2*k k;
+        0 0 k 1-k];
+end
